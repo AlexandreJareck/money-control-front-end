@@ -15,41 +15,48 @@ const GlobalStyles: GlobalStyleComponent<
 > = createGlobalStyle`
     
     @font-face {
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 300;
-      font-display: swap;
-      src: local(''),
-           url('../fonts/poppins-v15-latin-300.woff2') format('woff2'),
-    }
-    @font-face {
-      font-family: 'Poppins';
-      font-style: normal;
+      font-family: 'Roboto';
+      font-style: regular;
       font-weight: 400;
       font-display: swap;
       src: local(''),
-           url('../fonts/poppins-v15-latin-regular.woff2') format('woff2'),
+      
+           url('../fonts/Roboto-Regular.ttf') format('ttf'),
     }
     @font-face {
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 600;
+      font-family: 'Roboto';
+      font-style: bold;
+      font-weight: 700;
       font-display: swap;
       src: local(''),
-           url('../fonts/poppins-v15-latin-600.woff2') format('woff2'),
-    }   
+           url('../fonts/Roboto-Bold.ttf') format('ttf'),
+    }  
     
       ${({ theme }) => css`
         * {
           margin: 0;
           padding: 0;
           box-sizing: border-box;
+
+          :focus {
+            outline: 0;
+            box-shadow: 0 0 2px ${theme['green-500']};
+          }
         }
         body {
-          background-color: ${theme.colors.gray900};
-          color: ${theme.colors.white};
+          background-color: ${theme['gray-800']};
+          color: ${theme['gray-100']};
           -webkit-font-smoothing: antialiased;
         }
+
+        body,
+        input,
+        textarea,
+        h1,
+        button {
+          font: 400 10rem Roboto, sans-serif;
+        }
+
         button {
           cursor: pointer;
         }
