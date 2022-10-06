@@ -54,7 +54,7 @@ const GlobalStyles: GlobalStyleComponent<
         textarea,
         h1,
         button {
-          font: 400 10rem Roboto, sans-serif;
+          font: 400 1rem Roboto, sans-serif;
         }
 
         button {
