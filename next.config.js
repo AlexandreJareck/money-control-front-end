@@ -13,6 +13,15 @@ const nextConfig = {
     images: {
       allowFutureImage: true
     }
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/Transactions',
+        permanent: false
+      }
+    ]
   }
 }
 
