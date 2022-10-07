@@ -1,3 +1,4 @@
+import { SearchForm } from 'components/SearchForm'
 import {
   PriceHighLigth,
   TransactionContainer,
@@ -7,6 +8,7 @@ import {
 export function Transaction() {
   return (
     <TransactionContainer>
+      <SearchForm />
       <TransactionTable>
         <tbody>
           <tr>
