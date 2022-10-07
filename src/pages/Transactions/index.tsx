@@ -1,5 +1,4 @@
-import { Header, Summary } from '@components'
-import { Transaction } from 'components/Transaction'
+import { Header, Summary, Transaction } from '@components'
 import React from 'react'
 
 export default function Transactions() {
