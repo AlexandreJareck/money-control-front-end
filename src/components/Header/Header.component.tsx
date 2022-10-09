@@ -1,8 +1,4 @@
-import {
-  HeaderContainer,
-  HeaderContent,
-  NewTransactionButton
-} from './Header.styles'
+import { HeaderContainer, HeaderContent, NewTransactionButton } from './Header.styles'
 import * as Dialog from '@radix-ui/react-dialog'
 
 import logoImg from '@assets/Logo.svg'

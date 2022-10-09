@@ -1,0 +1,33 @@
+{
+  "$schema": "https://static.bit.dev/teambit/schemas/schema.json",
+  "teambit.workspace/workspace": {
+    "name": "components-ui",
+    "icon": "https://static.bit.dev/bit-logo.svg",
+    "defaultDirectory": "{scope}/{name}",
+    "defaultScope": "jareck.components-ui"
+  },
+  "teambit.dependencies/dependency-resolver": {
+    "packageManager": "teambit.dependencies/yarn",
+    "componentsDefaultDirectory": "components-ui/{name}",
+    "policy": {
+      "dependencies": {
+        "@babel/runtime": "7.19.0",
+        "@radix-ui/react-dialog": "1.0.0",
+        "@types/jest": "29.1.2",
+        "@types/node": "18.8.3",
+        "@types/react": "18.0.21",
+        "@types/styled-components": "^5.1.26",
+        "react-feather": "2.0.10",
+        "styled-components": "5.3.6"
+      },
+      "peerDependencies": {
+        "react": "18.2.0",
+        "react-dom": "18.2.0"
+      }
+    },
+    "linkCoreAspects": true
+  },
+  "teambit.workspace/variants": {
+    "*": {}
+  }
+}
