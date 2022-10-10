@@ -18,7 +18,7 @@
 # misc
 .DS_Store
 *.pem
-.yarn
+
 desktop.ini
 # debug
 npm-debug.log*

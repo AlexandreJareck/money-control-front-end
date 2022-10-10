@@ -11,7 +11,7 @@
 {
     "modal": {
         "scope": "jareck.components-ui",
-        "version": "0.0.2",
+        "version": "0.0.4",
         "mainFile": "index.ts",
         "rootDir": "components-ui/modal"
     },

@@ -12,7 +12,7 @@ export type ModalProps = {
 
 export function Modal({
   children,
-  title = 'New Transaction',
+  title = 'New Transaction3',
   button = <button>open</button>
 }: ModalProps) {
   return (

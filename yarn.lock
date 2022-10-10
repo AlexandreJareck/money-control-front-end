@@ -5,6 +5,12 @@ __metadata:
   version: 6
   cacheKey: 8
 
+".next-0aa4e3@workspace:.next":
+  version: 0.0.0-use.local
+  resolution: ".next-0aa4e3@workspace:.next"
+  languageName: unknown
+  linkType: soft
+
 "@babel/code-frame@npm:^7.18.6":
   version: 7.18.6
   resolution: "@babel/code-frame@npm:7.18.6::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40babel%2Fcode-frame%2F-%2Fcode-frame-7.18.6.tgz"
