@@ -28,6 +28,8 @@
     "linkCoreAspects": true
   },
   "teambit.workspace/variants": {
-    "*": {}
+    "*": {
+      "teambit.react/react": {}
+    }
   }
 }
