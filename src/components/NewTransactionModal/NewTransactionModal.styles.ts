@@ -30,8 +30,8 @@ export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButt
     }
 
     &[data-state='unchecked']:hover {
-      transition: background 0.2s;
-      background: ${theme['gray-600']};
+      transition: filter 0.2s;
+      filter: brightness(1.5);
     }
 
     &[data-state='checked'] {

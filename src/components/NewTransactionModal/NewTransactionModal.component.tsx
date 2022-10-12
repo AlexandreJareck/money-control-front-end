@@ -16,7 +16,7 @@ export function NewTransactionModal() {
       <Overlay>
         <Content>
           <CloseButton>
-            <XSquare />
+            <XSquare size={28} />
           </CloseButton>
           <Dialog.Title>New Transaction</Dialog.Title>
 
