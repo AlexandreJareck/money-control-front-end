@@ -106,4 +106,9 @@ export const CloseButton = styled(Dialog.Close)`
 
   cursor: pointer;
   color: ${_ => _.theme['gray-500']};
+
+  :hover {
+    transition: filter 0.2s;
+    filter: brightness(1.5);
+  }
 `
