@@ -1,10 +1,18 @@
-import { Transaction } from 'models/transaction.model'
-import { Api } from './api'
+import { SummaryModel } from 'models/Summary.model'
+import { TransactionModel } from 'models/Transaction.model'
+import { Api } from './Api'
 
-export async function GetTransactions(): Promise<Transaction[]> {
-  const { data } = await Api.get<Transaction[]>(`transaction/get-transactions`, {})
+type TransactionProps = {
+  data: TransactionModel[]
+  succes: boolean
+}
 
-  console.log(data)
+export async function GetTransactions(): Promise<SummaryModel> {
+  const { data } = await Api.get<TransactionProps>(`transaction/get-transactions`, {})
 
-  return data
+  const summary = new SummaryModel(data.data)
+
+  const result = summary.toJSON as SummaryModel
+
+  return result
 }
