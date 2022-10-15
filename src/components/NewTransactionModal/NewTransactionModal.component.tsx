@@ -1,6 +1,9 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import * as Dialog from '@radix-ui/react-dialog'
 import { XSquare } from 'react-feather'
 import { ArrowDown, ArrowUp } from 'react-feather'
+import { Controller, useForm } from 'react-hook-form'
+import * as z from 'zod'
 
 import {
   CloseButton,
@@ -10,7 +13,31 @@ import {
   TransactionTypeButton
 } from './NewTransactionModal.styles'
 
+const newTransactionFormSchema = z.object({
+  description: z.string(),
+  price: z.number(),
+  category: z.string(),
+  type: z.enum(['income', 'outcome'])
+})
+
+type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
+
 export function NewTransactionModal() {
+  const {
+    control,
+    register,
+    handleSubmit,
+    formState: { isSubmitting }
+  } = useForm<NewTransactionFormInputs>({
+    resolver: zodResolver(newTransactionFormSchema)
+  })
+
+  async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    // eslint-disable-next-line no-console
+    console.log(data)
+  }
+
   return (
     <Dialog.Portal>
       <Overlay>
@@ -20,23 +47,48 @@ export function NewTransactionModal() {
           </CloseButton>
           <Dialog.Title>New Transaction</Dialog.Title>
 
-          <form action="">
-            <input type="text" placeholder="Description" required />
-            <input type="text" placeholder="Price" required />
-            <input type="text" placeholder="Category" required />
+          <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
+            <input
+              type="text"
+              placeholder="Description"
+              required
+              {...register('description')}
+            />
+            <input
+              type="text"
+              placeholder="Price"
+              required
+              {...register('price', { valueAsNumber: true })}
+            />
+            <input
+              type="text"
+              placeholder="Category"
+              required
+              {...register('category')}
+            />
 
-            <TransactionType>
-              <TransactionTypeButton variant="income" value="income">
-                <ArrowUp size={24} color={'#00b37e'} />
-                Input
-              </TransactionTypeButton>
-              <TransactionTypeButton variant="outcome" value="outcome">
-                <ArrowDown size={24} color={'#f75a68'} />
-                Output
-              </TransactionTypeButton>
-            </TransactionType>
+            <Controller
+              control={control}
+              name="type"
+              render={({ field }) => {
+                return (
+                  <TransactionType onValueChange={field.onChange} value={field.value}>
+                    <TransactionTypeButton variant="income" value="income">
+                      <ArrowUp size={24} color={'#00b37e'} />
+                      Input
+                    </TransactionTypeButton>
+                    <TransactionTypeButton variant="outcome" value="outcome">
+                      <ArrowDown size={24} color={'#f75a68'} />
+                      Output
+                    </TransactionTypeButton>
+                  </TransactionType>
+                )
+              }}
+            />
 
-            <button type="submit">Register</button>
+            <button type="submit" disabled={isSubmitting}>
+              Register
+            </button>
           </form>
         </Content>
       </Overlay>

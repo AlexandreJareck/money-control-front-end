@@ -22,6 +22,7 @@ export function SearchForm() {
   async function handleSearchTransaction(data: SearchFormInputs) {
     await new Promise(resolve => setTimeout(resolve, 2000))
 
+    // eslint-disable-next-line no-console
     console.log(data)
   }
 
