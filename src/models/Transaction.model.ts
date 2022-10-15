@@ -5,14 +5,14 @@ export class TransactionModel {
   public type: string
   public price: number
   public priceFormat?: string
-  public createdAt: string
+  public createdAt?: Date
+  public createdAtFormat?: string
 
   constructor(
     description: string = '',
     id: string = '',
     type: string = '',
     category: string = '',
-    createdAt: string = '',
     price: number = 0
   ) {
     this.description = description
@@ -20,6 +20,5 @@ export class TransactionModel {
     this.id = id
     this.type = type
     this.category = category
-    this.createdAt = createdAt
   }
 }

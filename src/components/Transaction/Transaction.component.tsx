@@ -29,7 +29,7 @@ export function Transaction() {
                 </PriceHighLigth>
               </td>
               <td>{transaction.category}</td>
-              <td>{transaction.createdAt}</td>
+              <td>{transaction.createdAtFormat}</td>
             </tr>
           ))}
         </tbody>

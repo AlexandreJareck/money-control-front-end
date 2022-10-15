@@ -1,3 +1,4 @@
+import { DateFormatter } from './../utils/DateFormat'
 import { MoneyFormatter } from '@utils'
 import { TransactionModel } from './Transaction.model'
 
@@ -18,6 +19,7 @@ export class SummaryModel {
 
     transactions.forEach(transaction => {
       transaction.priceFormat = this.moneyFormatter(transaction.price)
+      transaction.createdAtFormat = this.dateFormatter(transaction.createdAt!)
       if (this.isDeposit(transaction.type)) this.calculateDeposit(transaction.price)
       else this.calculateWhitdraw(transaction.price)
     })
@@ -39,6 +41,10 @@ export class SummaryModel {
 
   private moneyFormatter(value: number) {
     return MoneyFormatter.format(value)
+  }
+
+  private dateFormatter(value: Date) {
+    return DateFormatter.format(value)
   }
 
   get toJSON() {
