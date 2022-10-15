@@ -1,20 +1,27 @@
 import { Header, Summary, Transaction } from '@components'
+import { SummaryModel } from 'models/Summary.model'
 import React from 'react'
 import { GetTransactions } from 'services'
 
-export default function Transactions() {
+type TransactionsProps = {
+  summary: SummaryModel
+}
+
+export default function Transactions({ summary }: TransactionsProps) {
   return (
     <div>
       <Header />
-      <Summary />
-      <Transaction />
+      <Summary summary={summary} />
+      <Transaction transcations={summary.transactions} />
     </div>
   )
 }
 
 export async function getServerSideProps() {
-  const transcations = await GetTransactions()
+  const summary = await GetTransactions()
   return {
-    props: {}
+    props: {
+      summary
+    }
   }
 }

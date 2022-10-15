@@ -1,9 +1,9 @@
-export class Transaction {
+export class TransactionModel {
   public id: string
   public description: string
   public category: string
   public type: string
-  public price?: number
+  public price: number
   public createdAt: string
 
   constructor(
@@ -11,10 +11,11 @@ export class Transaction {
     id: string = '',
     type: string = '',
     category: string = '',
-    createdAt: string = ''
+    createdAt: string = '',
+    price: number = 0
   ) {
     this.description = description
-    this.price = 0
+    this.price = price
     this.id = id
     this.type = type
     this.category = category

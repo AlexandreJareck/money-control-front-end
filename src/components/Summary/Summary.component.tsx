@@ -1,7 +1,12 @@
 import { SummaryCard, SummaryContainer } from './Summary.styles'
 import { ArrowDown, ArrowUp, DollarSign } from 'react-feather'
+import { SummaryModel } from 'models/Summary.model'
 
-export function Summary() {
+type SummaryProps = {
+  summary: SummaryModel
+}
+
+export function Summary({ summary }: SummaryProps) {
   return (
     <SummaryContainer>
       <SummaryCard>
@@ -9,7 +14,7 @@ export function Summary() {
           <span>Input</span>
           <ArrowUp size={32} color={'#00b37e'} />
         </header>
-        <strong>R$ 17.400,00</strong>
+        <strong>{summary.depositsFormat}</strong>
       </SummaryCard>
 
       <SummaryCard>
@@ -17,7 +22,7 @@ export function Summary() {
           <span>Output</span>
           <ArrowDown size={32} color={'#f75a68'} />
         </header>
-        <strong>R$ 17.400,00</strong>
+        <strong>{summary.withdrawsFormat}</strong>
       </SummaryCard>
 
       <SummaryCard variant="green">
@@ -25,7 +30,7 @@ export function Summary() {
           <span>Total</span>
           <DollarSign size={32} color={'#fff'} />
         </header>
-        <strong>R$ 17.400,00</strong>
+        <strong>{summary.totalValueFormat}</strong>
       </SummaryCard>
     </SummaryContainer>
   )
