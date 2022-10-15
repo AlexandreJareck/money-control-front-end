@@ -1,5 +1,4 @@
-import { SummaryModel } from 'models/Summary.model'
-import { TransactionModel } from 'models/Transaction.model'
+import { SummaryModel, TransactionModel } from '@models'
 import { Api } from './Api'
 
 type TransactionProps = {

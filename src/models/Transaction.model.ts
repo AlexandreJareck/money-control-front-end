@@ -4,6 +4,7 @@ export class TransactionModel {
   public category: string
   public type: string
   public price: number
+  public priceFormat?: string
   public createdAt: string
 
   constructor(

@@ -1,12 +1,10 @@
 import { SummaryCard, SummaryContainer } from './Summary.styles'
 import { ArrowDown, ArrowUp, DollarSign } from 'react-feather'
-import { SummaryModel } from 'models/Summary.model'
+import { useContext } from 'react'
+import { TransactionContext } from '@contexts'
 
-type SummaryProps = {
-  summary: SummaryModel
-}
-
-export function Summary({ summary }: SummaryProps) {
+export function Summary() {
+  const { summary } = useContext(TransactionContext)
   return (
     <SummaryContainer>
       <SummaryCard>

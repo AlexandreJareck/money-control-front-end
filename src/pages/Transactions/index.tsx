@@ -1,5 +1,6 @@
 import { Header, Summary, Transaction } from '@components'
-import { SummaryModel } from 'models/Summary.model'
+import { TransactionsProvider } from '@contexts'
+import { SummaryModel } from '@models'
 import React from 'react'
 import { GetTransactions } from 'services'
 
@@ -11,8 +12,10 @@ export default function Transactions({ summary }: TransactionsProps) {
   return (
     <div>
       <Header />
-      <Summary summary={summary} />
-      <Transaction transcations={summary.transactions} />
+      <TransactionsProvider summary={summary}>
+        <Summary />
+        <Transaction />
+      </TransactionsProvider>
     </div>
   )
 }

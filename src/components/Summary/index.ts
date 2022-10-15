@@ -1,2 +1,1 @@
-export * from './Summary.styles'
-export * from './Summary.component'
+export { Summary } from './Summary.component'

@@ -1,2 +1,1 @@
-export * from './NewTransactionModal.styles'
-export * from './NewTransactionModal.component'
+export { NewTransactionModal } from './NewTransactionModal.component'

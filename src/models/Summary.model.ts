@@ -1,4 +1,4 @@
-import { MoneyFormatter } from './../utils/MoneyFormat'
+import { MoneyFormatter } from '@utils'
 import { TransactionModel } from './Transaction.model'
 
 export class SummaryModel {
@@ -17,6 +17,7 @@ export class SummaryModel {
     this.withdraws = 0
 
     transactions.forEach(transaction => {
+      transaction.priceFormat = this.moneyFormatter(transaction.price)
       if (this.isDeposit(transaction.type)) this.calculateDeposit(transaction.price)
       else this.calculateWhitdraw(transaction.price)
     })

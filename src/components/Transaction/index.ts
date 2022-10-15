@@ -1,2 +1,2 @@
-export * from './Transaction.styles'
-export * from './Transaction.component'
+export { Transaction } from './Transaction.component'
+export type { TransactionProps } from './Transaction.component'
