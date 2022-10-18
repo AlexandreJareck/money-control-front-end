@@ -20,6 +20,12 @@ export function Transaction() {
       <SearchForm />
       <TransactionTable>
         <tbody>
+          <tr>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Cteated At</th>
+          </tr>
           {transactions.map(transaction => (
             <tr key={transaction.id}>
               <td width={'50%'}>{transaction.description}</td>
