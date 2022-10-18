@@ -11,8 +11,8 @@ type TransactionsProps = {
 export default function Transactions({ summary }: TransactionsProps) {
   return (
     <div>
+      <Header />
       <TransactionsProvider summary={summary}>
-        <Header />
         <Summary />
         <Transaction />
       </TransactionsProvider>

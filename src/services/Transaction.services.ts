@@ -15,3 +15,14 @@ export async function GetTransactions(): Promise<SummaryModel> {
 
   return result
 }
+
+export async function GetTransactionsByQuery(q: string): Promise<SummaryModel> {
+  const { data } = await Api.get<TransactionProps>(
+    `transaction/get-transactions-query?q=${q}`,
+    {}
+  )
+  const summary = new SummaryModel(data.data)
+  const result = summary.toJSON as SummaryModel
+
+  return result
+}
