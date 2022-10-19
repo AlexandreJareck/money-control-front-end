@@ -1,5 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { TransactionModel } from '@models'
 import * as Dialog from '@radix-ui/react-dialog'
+import { CreateTransaction } from '@services'
 import { XSquare } from 'react-feather'
 import { ArrowDown, ArrowUp } from 'react-feather'
 import { Controller, useForm } from 'react-hook-form'
@@ -33,9 +35,9 @@ export function NewTransactionModal() {
   })
 
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    // eslint-disable-next-line no-console
-    console.log(data)
+    const { category, description, price, type } = data
+
+    await CreateTransaction(new TransactionModel(description, type, category, price))
   }
 
   return (

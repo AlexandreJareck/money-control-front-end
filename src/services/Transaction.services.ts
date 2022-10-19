@@ -7,22 +7,34 @@ type TransactionProps = {
 }
 
 export async function GetTransactions(): Promise<SummaryModel> {
-  const { data } = await Api.get<TransactionProps>(`transaction/get-transactions`, {})
+  const { data: model } = await Api.get<TransactionProps>(`transaction/get-transactions`)
 
-  const summary = new SummaryModel(data.data)
+  const summary = createSummary(model.data)
 
-  const result = summary.toJSON as SummaryModel
-
-  return result
+  return summary
 }
 
 export async function GetTransactionsByQuery(q: string): Promise<SummaryModel> {
-  const { data } = await Api.get<TransactionProps>(
-    `transaction/get-transactions-query?q=${q}`,
-    {}
+  const { data: model } = await Api.get<TransactionProps>(
+    `transaction/get-transactions-query?q=${q}`
   )
-  const summary = new SummaryModel(data.data)
-  const result = summary.toJSON as SummaryModel
+  const summary = createSummary(model.data)
 
-  return result
+  return summary
+}
+
+export async function CreateTransaction(
+  transaction: TransactionModel
+): Promise<SummaryModel> {
+  const { data: model } = await Api.post<TransactionProps>('transaction', transaction)
+  const summary = createSummary(model.data)
+
+  return summary
+}
+
+function createSummary(data: TransactionModel[]) {
+  const summary = new SummaryModel(data)
+  const summaryJson = summary.toJSON as SummaryModel
+
+  return summaryJson
 }

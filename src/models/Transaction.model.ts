@@ -10,10 +10,10 @@ export class TransactionModel {
 
   constructor(
     description: string = '',
-    id: string = '',
     type: string = '',
     category: string = '',
-    price: number = 0
+    price: number = 0,
+    id: string = ''
   ) {
     this.description = description
     this.price = price
