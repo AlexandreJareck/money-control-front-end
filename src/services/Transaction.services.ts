@@ -26,7 +26,7 @@ export async function GetTransactionsByQuery(q: string): Promise<SummaryModel> {
 export async function CreateTransaction(
   transaction: TransactionModel
 ): Promise<SummaryModel> {
-  const { data: model } = await Api.post<TransactionProps>('transaction', transaction)
+  const { data: model } = await Api.post<TransactionProps>('transaction', {})
   const summary = createSummary(model.data)
 
   return summary

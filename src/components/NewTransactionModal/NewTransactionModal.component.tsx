@@ -28,6 +28,7 @@ export function NewTransactionModal() {
   const {
     control,
     register,
+    reset,
     handleSubmit,
     formState: { isSubmitting }
   } = useForm<NewTransactionFormInputs>({
@@ -37,7 +38,10 @@ export function NewTransactionModal() {
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
     const { category, description, price, type } = data
 
-    await CreateTransaction(new TransactionModel(description, type, category, price))
+    const transaction = new TransactionModel(description, type, category, price)
+    await CreateTransaction(transaction)
+
+    reset()
   }
 
   return (
