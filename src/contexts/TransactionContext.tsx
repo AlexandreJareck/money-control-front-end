@@ -6,6 +6,8 @@ interface TransactionsContextType {
   summary: SummaryModel
   // eslint-disable-next-line no-unused-vars
   fetchTransactions: (q: string) => Promise<void>
+  // eslint-disable-next-line no-unused-vars
+  fetchSummary: (summary: SummaryModel) => Promise<void>
 }
 
 interface TransactionsProviderProps {
@@ -27,8 +29,14 @@ export function TransactionsProvider({ children, summary }: TransactionsProvider
     setSummary(await GetTransactions())
   }
 
+  async function fetchSummary(summary: SummaryModel) {
+    setSummary(summary)
+  }
+
   return (
-    <TransactionContext.Provider value={{ summary: _summary, fetchTransactions }}>
+    <TransactionContext.Provider
+      value={{ summary: _summary, fetchTransactions, fetchSummary }}
+    >
       {children}
     </TransactionContext.Provider>
   )

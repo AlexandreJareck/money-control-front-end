@@ -21,4 +21,14 @@ export class TransactionModel {
     this.type = type
     this.category = category
   }
+
+  get toJSON() {
+    return {
+      id: this.id,
+      description: this.description,
+      type: this.type,
+      category: this.category,
+      price: this.price
+    }
+  }
 }
