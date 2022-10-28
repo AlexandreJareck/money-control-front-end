@@ -1,7 +1,9 @@
+import { TransactionContext } from '@contexts'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { TransactionModel } from '@models'
 import * as Dialog from '@radix-ui/react-dialog'
 import { CreateTransaction } from '@services'
+import { useContext } from 'react'
 import { XSquare } from 'react-feather'
 import { ArrowDown, ArrowUp } from 'react-feather'
 import { Controller, useForm } from 'react-hook-form'
@@ -25,6 +27,7 @@ const newTransactionFormSchema = z.object({
 type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
+  const { fetchSummary } = useContext(TransactionContext)
   const {
     control,
     register,
@@ -39,7 +42,9 @@ export function NewTransactionModal() {
     const { category, description, price, type } = data
 
     const transaction = new TransactionModel(description, type, category, price)
-    await CreateTransaction(transaction)
+    const summary = await CreateTransaction(transaction)
+
+    await fetchSummary(summary)
 
     reset()
   }
