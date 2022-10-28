@@ -17,12 +17,14 @@ export class SummaryModel {
     this.deposits = 0
     this.withdraws = 0
 
-    transactions.forEach(transaction => {
-      transaction.priceFormat = this.moneyFormatter(transaction.price)
-      transaction.createdAtFormat = this.dateFormatter(transaction.createdAt!)
-      if (this.isDeposit(transaction.type)) this.calculateDeposit(transaction.price)
-      else this.calculateWhitdraw(transaction.price)
-    })
+    if (transactions && transactions.length > 0) {
+      transactions.forEach(transaction => {
+        transaction.priceFormat = this.moneyFormatter(transaction.price)
+        transaction.createdAtFormat = this.dateFormatter(transaction.createdAt!)
+        if (this.isDeposit(transaction.type)) this.calculateDeposit(transaction.price)
+        else this.calculateWhitdraw(transaction.price)
+      })
+    }
   }
 
   private isDeposit(type: string) {
